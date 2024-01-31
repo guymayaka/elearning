@@ -171,6 +171,12 @@ class Helpers
         return $download_link;
     }
 
+    public static function getYoutubeLinkID($url)
+    {
+        preg_match("#(?<=v=)[a-zA-Z0-9-]+(?=&)|(?<=v\/)[^&\n]+|(?<=v=)[^&\n]+|(?<=youtu.be/)[^&\n]+#", $url, $matches);
+        return $matches[0];
+    }
+
     public static function getTimeAgo($date)
     {
         $time = strtotime($date);

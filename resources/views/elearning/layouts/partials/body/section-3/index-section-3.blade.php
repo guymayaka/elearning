@@ -1,69 +1,48 @@
-<!-- Page header -->
-<div class="pt-9 pb-9">
-    <div class="container">
-        <div class="row">
-            <div class="offset-xl-2 col-xl-8 offset-lg-1 col-lg-10 col-md-12 col-12">
-                <div class="text-center mb-5">
-                    <h1 class="display-2 fw-bold">Informations</h1>
-                </div>
-                <!-- Form -->
-                <form class="row px-md-20" action="recherche" method="GET">
-                    @csrf
-                    {{-- @captcha --}}
-                    <div class="mb-3 col ps-0 ms-2 ms-md-0">
-                        <input type="search" class="form-control" name="keyword" placeholder="Rechercher une imformation" required="" />
-                    </div>
-                    <div class="mb-3 col-auto ps-0">
-                        <input type="submit" class="btn btn-primary" value="Rechercher">
-                    </div>
-                </form>
-            </div>
+<section id="popular-courses" class="courses" style="background: #eef0ef;">
+    <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+            <h2>Cours</h2>
+            <p>COURS RÉCENTS </p>
         </div>
-    </div>
-</div>
-<!-- Page Content -->
-<div class="pb-12">
-    <div class="container">
-        <div class="row">
 
-            @foreach ($articles as $item)
-                <div class="col-xl-4 col-lg-4 col-md-6 col-12">
-                    <!-- Card -->
-                    <div class="card mb-4 shadow-lg ">
-                        <a href="{{ route('elearning.articles.show', $item->slug) }}"  class="card-img-top">
-                            <div style="height: 200px;overflow: hidden;">
-                                <img src="{{ Voyager::image($item->image) }}" class="card-img-top rounded-top-md img-cover" alt="" />
+        <div class="row" data-aos="zoom-in" data-aos-delay="100">
+            @foreach ($courses as $item)
+                <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+                    <a href="{{ route('elearning.cours.show', $item->slug) }}">
+                        <div class="course-item">
+                            <div style="height: 276px;overflow: hidden;">
+                                <img src="{{ Voyager::image($item->image) }}" class="img-fluid img-cover" alt="...">
                             </div>
-
-                        </a>
-                        <!-- Card body -->
-                        <div class="card-body">
-                            {{-- <a href="#" class="fs-5 fw-semi-bold d-block mb-3 text-danger">{{ $item->title }}</a> --}}
-                            <h3>
-                                <a href="{{ route('elearning.articles.show', $item->slug) }}" class="text-inherit" style="text-transform: lowercase;">
-                                    {{ Str::limit($item->title, 30, '...') }}
-                                </a>
-                            </h3>
-                            <p>
-                                {{ Str::limit($item->resume, 50, '...') }}
-                            </p>
-                                <!-- Row  -->
-                            <div class="row align-items-center g-0 mt-4">
-                                <div class="col-auto" style="height: 40px;overflow: hidden;">
-                                    <img src="{{ asset('elearning/assets/images/favicon.PNG') }}" alt="" class="rounded-circle avatar-sm me-2" />
+                            <div class="course-content">
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <h4>{{ $item->title }}</h4>
+                                    <p class="price">Gratuit</p>
                                 </div>
-                                {{-- <div class="col lh-1">
-                                    <h5 class="mb-1">elearning</h5>
-                                </div> --}}
-                                <div class="col-auto" style="margin-left: auto;">
-                                    <p class="fs-6 mb-0">{{ $item->created_at->diffForHumans() }}</p>
+
+                                <h3><a href="{{ route('elearning.cours.show', $item->slug) }}">{{ $item->categorie->nom }}</a></h3>
+                                <p>
+                                    {{ Str::limit($item->resume, 100, '...') }}
+                                </p>
+                                <div class="trainer d-flex justify-content-between align-items-center">
+                                    <div class="trainer-profile d-flex align-items-center">
+                                        <img src="assets/img/trainers/trainer-1.jpg" class="img-fluid" alt="">
+                                        <span>{{ $item->user->name }}</span>
+                                    </div>
+                                    <div class="trainer-rank d-flex align-items-center">
+                                        <i class="bx bx-user"></i>&nbsp;50
+                                        &nbsp;&nbsp;
+                                        <i class="bx bx-heart"></i>&nbsp;65
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-             @endforeach
-             <a href="{{ route('elearning.articles.index') }}" class="btn btn-primary m-auto" style="width: inherit;">Voir plus</a>
+                    </a>
+                </div> <!-- End Course Item-->
+            @endforeach
+
+
         </div>
+
     </div>
-</div>
+</section>

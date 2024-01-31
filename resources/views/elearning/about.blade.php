@@ -8,7 +8,7 @@
 @section('page_seo')
 
     <meta name="description" content="{{ setting('site.description') }}" />
-    <meta name="keywords" content="news, actualites, articles">
+    <meta name="keywords" content="news, actualites, courseses">
     <meta name="author" content="{{ setting('site.title') }}">
     <meta property="og:site_name" content="elearning.com">
     <meta property="og:url" content="{{ url()->current() }}" />

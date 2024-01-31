@@ -21,7 +21,7 @@
         <div class="col-lg-6">
             <h2 class="about-title">QUI SOMMES-NOUS ?</h2>
             <p>
-                Nous sommes un groupe de presse, dénommé elearning.NET oeuvrant en République Démocratique du Congo. Nous couvrons l'actualité politique, sociale, culturelle, économique et bien d'autres. en outre, nous offrons l'opportunité aux scientifiques de différentes souches à publier sur la toile leurs productions scientifiques (articles, revues, biographie...).
+                Nous sommes un groupe de presse, dénommé elearning.NET oeuvrant en République Démocratique du Congo. Nous couvrons l'actualité politique, sociale, culturelle, économique et bien d'autres. en outre, nous offrons l'opportunité aux scientifiques de différentes souches à publier sur la toile leurs productions scientifiques (courseses, revues, biographie...).
             </p>
             <p>
                 Nous sommes une équipe des professionnels en Journalisme et en technologies de l'information et de la communication et rassurons de faire notre travail avec les valeurs de partialité, liberté et professionnalisme.

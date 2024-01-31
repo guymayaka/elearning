@@ -25,13 +25,13 @@ style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(
             </h2>
         </div>
 
-            @forelse ($articles as $article)
+            @forelse ($courseses as $course)
                 <div class="row mb-5">
                     <div class="col-lg-3">
                         <div class="m-auto">
                             <div class="img border-0 m-auto" style="width: 250px;height:250px;border-radius: 50%;overflow: hidden;">
-                                <a href="{{ route('elearning.articles.show', $article->slug) }}">
-                                    <img src="{{ Voyager::image($article->image) }}"
+                                <a href="{{ route('elearning.courseses.show', $course->slug) }}">
+                                    <img src="{{ Voyager::image($course->image) }}"
                                         class="img-cover" alt="">
                                 </a>
                             </div>
@@ -40,11 +40,11 @@ style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(
                     <div class="col-lg-9 mt-5">
                         <div class="flex-grow-1">
                             <h5 class="fw-bold mb-4">
-                                <a href="{{ route('elearning.articles.show', $article->slug) }}">{{ $article->title }}</a>
+                                <a href="{{ route('elearning.courseses.show', $course->slug) }}">{{ $course->title }}</a>
                             </h5>
                             <div class="desc">
                                <p>
-                                        {{ $article->resume }}
+                                        {{ $course->resume }}
                                     </p>
                             </div>
                         </div>

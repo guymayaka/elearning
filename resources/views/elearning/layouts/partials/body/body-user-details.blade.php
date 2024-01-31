@@ -64,7 +64,7 @@
 
                         <ul class="nav nav-tabs" role="tablist" id="product-tab">
                             <li class="nav-item">
-                                <a href="#top-sellers" class="nav-link active" data-toggle="tab" role="tab">Mes articles <span class="badge badge-secondary">{{ count($articles) }}</span></a>
+                                <a href="#top-sellers" class="nav-link active" data-toggle="tab" role="tab">Mes courseses <span class="badge badge-secondary">{{ count($courseses) }}</span></a>
                             </li>
                             <li class="nav-item">
                                 <a href="#best-rated" class="nav-link" data-toggle="tab" role="tab">Les avis des clients <span class="badge badge-secondary">{{ $avis }}</span></a>
@@ -75,12 +75,12 @@
                             <div role="tabpanel" class="tab-pane fade show active" id="top-sellers">
                                 <div class="top_sellers_area">
                                     <div class="row">
-                                        @forelse ($articles as $item)
+                                        @forelse ($courseses as $item)
                                             <div class="col-12 col-sm-6 col-lg-4">
                                                 <div class="single_top_sellers">
                                                     <div class="top_seller_image">
                                                         <div style="height: 169px;overflow: hidden;" class="ndongo">
-                                                            <img src="{{ Voyager::image($item->thumbnail('scale-article')) }}" data-src="{{ Voyager::image($item->thumbnail('populaire-article')) }}" alt="{{ $item->title }}" class="lazyestload img-cover">
+                                                            <img src="{{ Voyager::image($item->thumbnail('scale-course')) }}" data-src="{{ Voyager::image($item->thumbnail('populaire-course')) }}" alt="{{ $item->title }}" class="lazyestload img-cover">
                                                         </div>
                                                     </div>
                                                     <div class="top_seller_desc">
@@ -98,14 +98,14 @@
                                                         <div class="ts-seller-info mt-3 d-flex align-items-center justify-content-between">
                                                             <!-- Add to cart -->
                                                             <div class="ts_product_add_to_cart">
-                                                                <a href="{{ route('elearning.articles.show', $item->slug) }}" data-toggle="tooltip" data-placement="top" title="Discuter avec le vendeur" style="width: inherit;padding: 0 10px;"><i class="icofont-shopping-cart"></i> Discuter</a>
+                                                                <a href="{{ route('elearning.courseses.show', $item->slug) }}" data-toggle="tooltip" data-placement="top" title="Discuter avec le vendeur" style="width: inherit;padding: 0 10px;"><i class="icofont-shopping-cart"></i> Discuter</a>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         @empty
-                                            <div class="alert alert-warning text-center w-100">{{ $user->name }} n'a pas encore publié des articles pour l'instant. <br>Veuillez le visiter prochainement</div>
+                                            <div class="alert alert-warning text-center w-100">{{ $user->name }} n'a pas encore publié des courseses pour l'instant. <br>Veuillez le visiter prochainement</div>
                                         @endforelse
 
 

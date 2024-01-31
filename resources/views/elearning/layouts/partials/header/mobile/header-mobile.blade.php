@@ -15,7 +15,7 @@
             <nav class="navbar navbar-light navbar-inverse">
                 <ul id="side-menu" class="nav navbar-nav list-group list-unstyled side-link">
                     <li class="menu-item nav-item"><a href="#" class="nav-link {{ (request()->is('/')) ? 'active' : '' }}">A la une</a></li>
-                    @foreach (App\Models\ArticlesCategory::where('published', 1)->limit(6)->get() as $item)
+                    @foreach (App\Models\coursesesCategory::where('published', 1)->limit(6)->get() as $item)
                          <li class="menu-item nav-item">
                              <a class="nav-link {{ (request()->is($item->nom.'/*')) ? 'active' : '' }}" href="{{ route('elearning.categories.show', $item->slug) }}">{{ $item->nom }}</a>
                          </li>

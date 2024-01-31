@@ -5,6 +5,7 @@ use App\Http\Controllers\ArticlesController;
 use App\Http\Controllers\AuteursController;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\CoursController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PublicationsController;
 use App\Http\Controllers\ResponseController;
@@ -32,11 +33,7 @@ Route::group(['as' => 'elearning.'], function(){
     Route::get('recherche', [SearchController::class, 'search']);
     Route::resources([
         'contact' => ContactController::class,
-        'articles' => ArticlesController::class,
-        'responses' => ResponseController::class,
-        'categories' => CategoriesController::class,
-        'publications' => PublicationsController::class,
-        'auteurs' => AuteursController::class
+        'cours' => CoursController::class
     ]);
 
 });

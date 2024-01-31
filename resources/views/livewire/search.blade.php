@@ -5,7 +5,7 @@
            <div class="col-lg-6">
                <div class="block-title-7">
                    <h4 class="h5 text-center center-backline">
-                       <span class="bg-themes">Derniers articles</span>
+                       <span class="bg-themes">Derniers courseses</span>
                    </h4>
                </div>
            </div>
@@ -16,7 +16,7 @@
         <!--output-->
 
         @forelse ($publications as $item)
-            <article class="card card-full hover-a mb-module">
+            <course class="card card-full hover-a mb-module">
                 <div class="row">
                     <div class="col-3 pe-2 pe-md-0">
                         <!--thumbnail-->
@@ -25,7 +25,7 @@
                             <div style="height: 200px;overflow: hidden;">
                                 @if ($item->image)
                                     <img class="img-cover"
-                                    src="{{ FrontEnd::image($item->image, 'recent-article') }}"
+                                    src="{{ FrontEnd::image($item->image, 'recent-course') }}"
                                     alt="{{ $item->title }}">
                                 @else
                                     <img class="img-cover" src="{{ asset('elearning/assets/img/book-2.png') }}" alt="" srcset="">
@@ -66,7 +66,7 @@
                         </div>
                     </div>
                 </div>
-            </article>
+            </course>
         @empty
         <div class="alert alert-warning text-center"> Aucun resultat </div>
         @endforelse

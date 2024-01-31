@@ -1,7 +1,7 @@
 @extends('elearning.layouts.master')
 
 @section('title')
-    elearning - Les catégories articles
+    elearning - Les catégories courseses
 @endsection
 
 @section('css')

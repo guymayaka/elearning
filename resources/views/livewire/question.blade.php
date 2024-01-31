@@ -34,7 +34,7 @@
 
 
     <form class="mt-5">
-        <input type="hidden" wire:model="article_id" name="article_id" value="{{ $article->id }}">
+        <input type="hidden" wire:model="course_id" name="course_id" value="{{ $course->id }}">
        <div class="row">
            <div class="col-md-12">
                <div class="form-group mb-3">

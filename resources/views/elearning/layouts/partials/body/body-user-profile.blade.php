@@ -23,10 +23,10 @@
           {{-- <hr> --}}
           <div class="p-4 bg-light">
 
-            <form method="POST" action="article-delete" style="text-align: center;">
+            <form method="POST" action="course-delete" style="text-align: center;">
               @csrf
               {{-- @captcha --}}
-              <input type="hidden" name="article_id" id="document_id">
+              <input type="hidden" name="course_id" id="document_id">
               <button class="btn text-white" style="background-color: #e91e63;" type="submit">Supprimer</button>
               <button class="btn btn-secondary" type="button" data-dismiss="modal">Non</button>
             </form>
@@ -266,27 +266,27 @@
 
                         <ul class="nav nav-tabs" role="tablist" id="product-tab">
                             <li class="nav-item">
-                                <a href="#top-sellers" class="nav-link @if ($available_articles_count > 0) active @endif" data-toggle="tab" role="tab">Mes articles <span class="badge badge-secondary">{{ $available_articles_count }}</span></a>
+                                <a href="#top-sellers" class="nav-link @if ($available_courseses_count > 0) active @endif" data-toggle="tab" role="tab">Mes courseses <span class="badge badge-secondary">{{ $available_courseses_count }}</span></a>
                             </li>
                             <li class="nav-item">
                                 <a href="#best-rated" class="nav-link" data-toggle="tab" role="tab">Favoris <span class="badge badge-secondary">{{ $cart_count }}</span></a>
                             </li>
                             <li class="nav-item">
-                                <a href="#on-sale" class="nav-link @if ($available_articles_count < 1) active @endif" data-toggle="tab" role="tab">Nouvel article</a>
+                                <a href="#on-sale" class="nav-link @if ($available_courseses_count < 1) active @endif" data-toggle="tab" role="tab">Nouvel course</a>
                             </li>
                         </ul>
 
                         <div class="tab-content">
-                            <div role="tabpanel" class="tab-pane fade @if ($available_articles_count > 0) show active @endif" id="top-sellers">
+                            <div role="tabpanel" class="tab-pane fade @if ($available_courseses_count > 0) show active @endif" id="top-sellers">
                                 <div class="top_sellers_area">
                                     <div class="row">
-                                        @forelse ($articles as $item)
+                                        @forelse ($courseses as $item)
                                             <div class="col-12 col-sm-6 col-lg-4">
                                                 <div class="single_top_sellers">
 
                                                     <div class="top_seller_image">
                                                         <div style="height: 169px;overflow: hidden;" class="ndongo">
-                                                            <img src="{{ Voyager::image($item->thumbnail('scale-article')) }}" data-src="{{ Voyager::image($item->thumbnail('populaire-article')) }}" alt="{{ $item->title }}" class="lazyestload img-cover">
+                                                            <img src="{{ Voyager::image($item->thumbnail('scale-course')) }}" data-src="{{ Voyager::image($item->thumbnail('populaire-course')) }}" alt="{{ $item->title }}" class="lazyestload img-cover">
                                                         </div>
                                                     </div>
                                                     <div class="top_seller_desc">
@@ -311,24 +311,24 @@
 
                                                             <!-- Compare -->
                                                             <div class="ts_product_compare">
-                                                                <a href="{{ route('elearning.articles.edit', $item->slug) }}" data-placement="top" title="Modifier"><i class="icofont-edit"></i></a>
+                                                                <a href="{{ route('elearning.courseses.edit', $item->slug) }}" data-placement="top" title="Modifier"><i class="icofont-edit"></i></a>
                                                             </div>
 
                                                             <!-- Quick View -->
                                                             <div class="ts_product_quick_view">
-                                                                <a href="{{ route('elearning.articles.show', $item->slug) }}" data-placement="top" title="Voir le details"><i class="icofont-eye-alt"></i></a>
+                                                                <a href="{{ route('elearning.courseses.show', $item->slug) }}" data-placement="top" title="Voir le details"><i class="icofont-eye-alt"></i></a>
                                                             </div>
 
                                                             <!-- Wishlist -->
                                                             <div class="ts_product_wishlist">
-                                                                <a href="#" class="delete-btn" data-toggle="tooltip" data-placement="top" title="Supprimer cet article" data-id={{ $item->id }} id="{{ $item->id }}" data-title="{{$item->title}}" onclick="myFunction($item->id)" ><i class="icofont-trash"></i></a>
+                                                                <a href="#" class="delete-btn" data-toggle="tooltip" data-placement="top" title="Supprimer cet course" data-id={{ $item->id }} id="{{ $item->id }}" data-title="{{$item->title}}" onclick="myFunction($item->id)" ><i class="icofont-trash"></i></a>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         @empty
-                                            <div class="alert alert-warning text-center w-100">Pas d'article pour l'instant. <br>Tapez sur <span style="color: #070a57;">nouvel article</span> pour publier</div>
+                                            <div class="alert alert-warning text-center w-100">Pas d'course pour l'instant. <br>Tapez sur <span style="color: #070a57;">nouvel course</span> pour publier</div>
                                         @endforelse
 
 
@@ -345,10 +345,10 @@
                                                 <div class="top_seller_image">
                                                     <div style="height: 169px;overflow: hidden;" class="ndongo">
                                                       @php
-                                                          $images = App\Models\Article::where('slug', $item->id)->get('image');
+                                                          $images = App\Models\course::where('slug', $item->id)->get('image');
                                                       @endphp
                                                         @foreach ($images as $getimage)
-                                                            <img src="{{ FrontEnd::image($getimage->image, 'scale-article') }}" data-src="{{ FrontEnd::image($getimage->image, 'populaire-article') }}" alt="{{ $item->title }}" class="lazyestload img-cover">
+                                                            <img src="{{ FrontEnd::image($getimage->image, 'scale-course') }}" data-src="{{ FrontEnd::image($getimage->image, 'populaire-course') }}" alt="{{ $item->title }}" class="lazyestload img-cover">
                                                         @endforeach
 
                                                     </div>
@@ -357,9 +357,9 @@
                                                     <h5>{{ $item->name }}</h5>
                                                     <h6>{{ $item->price }}
                                                         @php
-                                                            $articles_devises = App\Models\Article::where('slug', $item->id)->get('devise_id');
+                                                            $courseses_devises = App\Models\course::where('slug', $item->id)->get('devise_id');
                                                         @endphp
-                                                      @foreach ($articles_devises as $getdevise)
+                                                      @foreach ($courseses_devises as $getdevise)
                                                         {{ $getdevise->devise->symbole }}
                                                       @endforeach
                                                         </span></h6>
@@ -368,7 +368,7 @@
 
 
                                                         <div class="ts_product_add_to_cart">
-                                                            <a href="{{ route('elearning.articles.show', $item->id) }}" data-toggle="tooltip" data-placement="top" title="Discuter avec le vendeur" style="width: inherit;padding: 0 10px;"><i class="icofont-shopping-cart"></i> Discuter</a>
+                                                            <a href="{{ route('elearning.courseses.show', $item->id) }}" data-toggle="tooltip" data-placement="top" title="Discuter avec le vendeur" style="width: inherit;padding: 0 10px;"><i class="icofont-shopping-cart"></i> Discuter</a>
                                                         </div>
 
                                                     </div>
@@ -377,39 +377,39 @@
                                         </div>
                                         <hr>
                                         @empty
-                                            <div class="alert alert-warning text-center w-100">Pas d'article favori pour l'instant. <p>Les fovoris sont les articles que vous avez aimés.</p></div>
+                                            <div class="alert alert-warning text-center w-100">Pas d'course favori pour l'instant. <p>Les fovoris sont les courseses que vous avez aimés.</p></div>
                                         @endforelse
                                     </div>
                                 </div>
                             </div>
 
-                            <div role="tabpanel" class="tab-pane fade @if ($available_articles_count < 1) show active @endif" id="on-sale">
+                            <div role="tabpanel" class="tab-pane fade @if ($available_courseses_count < 1) show active @endif" id="on-sale">
                                 <div class="on_sale_area" style="padding: 10px 40px;box-shadow: 0px 0.3px 4px #222;margin:auto;">
                                     <div class="container">
                                         <div class="row">
-                                            <form action="{{ route('elearning.articles.store') }}" method="post" enctype="multipart/form-data" class="w-100">
+                                            <form action="{{ route('elearning.courseses.store') }}" method="post" enctype="multipart/form-data" class="w-100">
                                                 {{-- @method('PUT') --}}
                                                 @csrf
                                                 <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
                                                 <input type="hidden" class="form-control" name="published" value="on">
                                                 <div class="form-group mb-3 text-center">
-                                                    <h4 class="title mb-2" style="margin-top: 0px;">Publication du nouvel article</h4>
+                                                    <h4 class="title mb-2" style="margin-top: 0px;">Publication du nouvel course</h4>
                                                 </div>
                                                 <hr>
                                                 <div class="row">
                                                     <div class="col-lg-3">
-                                                        <label for="name">Titre de l'article :</label>
+                                                        <label for="name">Titre de l'course :</label>
                                                     </div>
                                                    <div class="col-lg-9">
                                                         <div class="form-group">
-                                                            <input type="text" name="title" id="" class="form-control" placeholder="Ecrivez le titre de l'article" required>
+                                                            <input type="text" name="title" id="" class="form-control" placeholder="Ecrivez le titre de l'course" required>
                                                         </div>
                                                    </div>
                                                 </div>
 
                                                 <div class="row mb-3">
                                                     <div class="col-lg-3">
-                                                        <label for="name">Catégorie de l'article :</label>
+                                                        <label for="name">Catégorie de l'course :</label>
                                                     </div>
                                                    <div class="col-lg-9">
                                                         <div class="form-group">
@@ -425,7 +425,7 @@
 
                                                 <div class="row">
                                                     <div class="col-lg-3">
-                                                        <label for="name">L'article est dans quelle province ? :</label>
+                                                        <label for="name">L'course est dans quelle province ? :</label>
                                                     </div>
                                                    <div class="col-lg-9">
                                                         <div class="form-group">
@@ -441,7 +441,7 @@
 
                                                 <div class="row">
                                                     <div class="col-lg-3 col-12">
-                                                        <label for="name">Ajouter des images pour l'article :</label>
+                                                        <label for="name">Ajouter des images pour l'course :</label>
                                                     </div>
                                                    <div class="col-lg-2 col-12">
                                                     <div class="form-group mb-3">
@@ -471,7 +471,7 @@
                                                    </div>
                                                     <div class="col-lg-7 col-12">
                                                         {{-- <div class="col-lg-3"> --}}
-                                                            <label for="name">Autres images de l'article :</label>
+                                                            <label for="name">Autres images de l'course :</label>
                                                             <div id="albumAvis" class="row"></div>
                                                         {{-- </div> --}}
                                                     </div>
@@ -480,11 +480,11 @@
 
                                                 <div class="row">
                                                     <div class="col-lg-3">
-                                                        <label for="name">Combien coûte cet article :</label>
+                                                        <label for="name">Combien coûte cet course :</label>
                                                     </div>
                                                    <div class="col-lg-6">
                                                         <div class="form-group">
-                                                            <input type="number" name="price" id="" class="form-control" placeholder="Ecrivez le prix de l'article" required>
+                                                            <input type="number" name="price" id="" class="form-control" placeholder="Ecrivez le prix de l'course" required>
                                                             <small class="help-block" style="float: left;color: gray;">Ecrivez uniquement les chiffres.</small>
                                                         </div>
                                                    </div>
@@ -508,7 +508,7 @@
                                                     </div>
                                                    <div class="col-lg-9">
                                                         <div class="form-group">
-                                                            <textarea name="description" id="" cols="30" rows="5" class="form-control" placeholder="Parlez en détails sur votre article" required></textarea>
+                                                            <textarea name="description" id="" cols="30" rows="5" class="form-control" placeholder="Parlez en détails sur votre course" required></textarea>
                                                         </div>
                                                    </div>
                                                 </div>
